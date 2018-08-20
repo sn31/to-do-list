@@ -10,3 +10,7 @@ ul {
 #completedList input{
     list-style-type: none;
 }
+
+h1 {
+    font-family: 'Lobster';
+}

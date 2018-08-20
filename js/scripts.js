@@ -7,18 +7,21 @@ Task.prototype.removeTask = function () {
         $(this).remove();
         $(".completed").show();
         $("#completedList").append("<li>"+$(this).text()+"<li>");
-        
+        $("#completedList li").unbind('click').click(function () {
+            $(this).remove();
+            $("#taskList").append("<li><input type='checkbox'/>"+$(this).text()+"<li>");
+        })
     })
 }
+
 $(document).ready(function () {
     $("form#input").submit(function (event) {
         event.preventDefault();
         var taskDescriptionInput = $("#taskInput").val();
-        var taskStatus = $("input[type=checkbox]:checked").val();
         var newTask = new Task(taskDescriptionInput);
         $("#taskInput").val("");
         $(".taskList").show();
-        $("#taskList").append("<li><input type='checkbox'/> &nbsp;&nbsp;" + newTask.taskDescription + "<br></li>")
+        $("#taskList").append("<li><input type='checkbox'/> &nbsp;&nbsp;" + newTask.taskDescription + "</li>")
         newTask.removeTask();
     })
 })
