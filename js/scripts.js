@@ -1,17 +1,25 @@
-function Task(taskDesceiption,status) {
-    this.taskDescription = taskDesceiption;
-    this.status = status;
+function Task(taskDescription,status) {
+    this.taskDescription = taskDescription;
 } 
 
+Task.prototype.removeTask = function() {
+    this.taskDescription ="TESTING";
+}
 $(document).ready(function() {
     $("form#input").submit(function(event) {
         event.preventDefault();
         var taskDescriptionInput = $("#taskInput").val();
-        var newTask = new Task(taskDescriptionInput,false);
+        var taskStatus = $("input[type=checkbox]:checked").val();
+        var newTask = new Task(taskDescriptionInput);
         $("#taskInput").val("");
-        $("#result").show();
-        $("#result").append("<input name='statusBox' type='checkbox'/> &nbsp;&nbsp;" + newTask.taskDescription + "<br>")
-        var taskStatus = $("input:checkbox[name=statusBox]").val();
-        console.log(taskStatus);
+        $("#taskList").show();
+        $("#taskList").append("<li><input type='checkbox' value='"+newTask.taskDescription+"'/> &nbsp;&nbsp;" + newTask.taskDescription + "<br></li>")
+        
+        $("#taskList li").click(function () {
+            $(this).remove();
+            console.log(this.val());
+            $("#completedList").append(this)
+        })
+        
     })
 })
