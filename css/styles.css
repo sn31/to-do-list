@@ -5,3 +5,7 @@
 ul {
     list-style-type: none;
 }
+
+#completedList input{
+    list-style-type: none;
+}

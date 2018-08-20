@@ -13,12 +13,11 @@ $(document).ready(function() {
         var newTask = new Task(taskDescriptionInput);
         $("#taskInput").val("");
         $("#taskList").show();
-        $("#taskList").append("<li><input type='checkbox' value='"+newTask.taskDescription+"'/> &nbsp;&nbsp;" + newTask.taskDescription + "<br></li>")
+        $("#taskList").append("<li><input type='checkbox' value='test'/> &nbsp;&nbsp;" + newTask.taskDescription + "<br></li>")
         
         $("#taskList li").click(function () {
             $(this).remove();
-            console.log(this.val());
-            $("#completedList").append(this)
+            $("#completedList").append($(this).text())
         })
         
     })
