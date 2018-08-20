@@ -5,6 +5,7 @@ function Task(taskDescription, status) {
 Task.prototype.removeTask = function () {
     $("#taskList li").unbind('click').click(function () {
         $(this).remove();
+        $(".completed").show();
         $("#completedList").append("<li>"+$(this).text()+"<li>");
         
     })
@@ -16,7 +17,7 @@ $(document).ready(function () {
         var taskStatus = $("input[type=checkbox]:checked").val();
         var newTask = new Task(taskDescriptionInput);
         $("#taskInput").val("");
-        $("#taskList").show();
+        $(".taskList").show();
         $("#taskList").append("<li><input type='checkbox'/> &nbsp;&nbsp;" + newTask.taskDescription + "<br></li>")
         newTask.removeTask();
     })

@@ -1,6 +1,7 @@
-#result {
+.taskList, .completed{
     display:none;
 }
+
 
 ul {
     list-style-type: none;
